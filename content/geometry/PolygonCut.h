@@ -15,18 +15,16 @@
 #pragma once
 
 #include "Point.h"
-#include "lineIntersection.h"
 
 typedef Point<double> P;
 vector<P> polygonCut(const vector<P>& poly, P s, P e) {
 	vector<P> res;
 	fore(i,0,SZ(poly)) {
 		P cur = poly[i], prev = i ? poly[i-1] : poly.back();
-		bool side = s.cross(e, cur) < 0;
-		if (side != (s.cross(e, prev) < 0))
-			res.pb(lineInter(s, e, cur, prev).snd);
-		if (side)
-			res.pb(cur);
+		auto a = s.cross(e, cur), b = s.cross(e, prev);
+		if ((a < 0) != (b < 0))
+			res.pb(cur + (prev - cur) * (a / (a - b)));
+		if (a < 0) res.pb(cur);
 	}
 	return res;
 }
