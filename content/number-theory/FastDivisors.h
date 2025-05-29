@@ -3,7 +3,8 @@
  * Date: 2024-10-11
  * License: CC0
  * Description: Given the prime factorization of a number,
- * returns all its divisors.
+ * returns all its divisors. Yo can use Eratosthenes to get the
+ * prime factorization.
  * Time: O(d), where $d$ is the number of divisors.
  * Status: stress-tested
  */
