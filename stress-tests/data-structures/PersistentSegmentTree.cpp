@@ -11,6 +11,14 @@ struct Slow {
 	vector<Tree> trees;
 
 	Slow(ll n) : n(n), trees(1, Tree(n)) {}
+	ll init(const vector<Tree::T>& v) {
+		assert(SZ(v) == n);
+		trees.pb(Tree(n));
+		fore(i, 0, n) {
+			trees.back().upd(i, v[i]);
+		}
+		return SZ(trees) - 1;
+	}
 	ll upd(ll ver, ll i, Tree::T x) {
 		assert(ver < SZ(trees));
 		trees.pb(trees[ver]);
@@ -39,9 +47,16 @@ int main() {
 		fore(q, 0, 100) {
 			ll ver = rand() % SZ(slow_versions);
 
-			ll t = rand() % 2;
+			ll t = rand() % 3;
+			if (t == 0) { // init
+				vector<ll> v(n);
+				fore(i, 0, n) {
+					v[i] = rand() % 1000;
+				}
 
-			if (t) { // Update
+				slow_versions.pb(slow.init(v));
+				st_versions.pb(st.init(v));
+			} else if (t == 1) { // Update
 				ll i = rand() % n;
 				ll x = rand() % 10000;
 
