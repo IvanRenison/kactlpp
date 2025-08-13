@@ -4,7 +4,8 @@
  * License: CC0
  * Source: notebook el vasito
  * Description: Max segment tree in which each update creates a new version of the tree
- * 	and you can query and update on any version of the tree.
+ * 	and you can query and update on any version of the tree. \texttt{init} and
+ * 	\texttt{upd} return the new version number.
  * Can be changed by modifying T, f and unit.
  * Time: O(\log N)
  * Usage: Tree rmq(n);
