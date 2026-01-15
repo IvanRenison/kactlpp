@@ -18,7 +18,7 @@ template<class T, ll N> struct Matrix {
 	M operator*(const M& m) const {
 		M a;
 		fore(i,0,N) fore(j,0,N)
-			fore(k,0,N) a.d[i][j] += d[i][k]*m.d[k][j];
+			fore(k,0,N) a.d[i][k] += d[i][j] * m.d[j][k];
 		return a;
 	}
 	array<T, N> operator*(const array<T, N>& vec) const {
